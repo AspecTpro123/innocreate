@@ -1,81 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innocreate | Our Accomplishments</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hover-zoom:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innocreate | Our Accomplishments</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #0a0a0a; color: #e0e0e0; font-family: 'Helvetica', sans-serif; line-height: 1.7; }
+  a { color: #39ff14; } a:hover { color: #ff00ff; }
+  h2,h3 { color: #00f0ff; text-shadow: 0 0 8px #00f0ff; }
+  nav { background-color: #111111; }
+  nav a { color: #00f0ff; } nav a:hover { color: #ff00ff; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .section-bg { background-color: #111111; border-radius: 1rem; box-shadow: 0 0 20px #00f0ff; padding: 2.5rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .img-right { float: right; margin-left: 2rem; max-width: 45%; border-radius: 1rem; box-shadow: 0 0 20px #ff00ff; }
+  .img-left { float: left; margin-right: 2rem; max-width: 45%; border-radius: 1rem; box-shadow: 0 0 20px #39ff14; }
+  .text-block { max-width: 50%; }
+  @media(max-width:768px) { 
+    .img-left, .img-right, .text-block { float: none; margin: 0 auto 1rem; display: block; max-width: 90%; }
+  }
+</style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body>
 
-  <!-- Navbar -->
-  <nav class="w-full flex justify-between items-center px-8 py-5 bg-white shadow fixed top-0 z-50">
-    <h1 class="text-3xl font-bold text-blue-800">Innocreate</h1>
-    <div class="space-x-6 text-lg">
-      <a href="index.html" class="text-blue-800 hover:text-yellow-500 transition">Home</a>
-      <a href="accomplishments.html" class="text-blue-800 hover:text-yellow-500 transition">Our Accomplishments</a>
-      <a href="contact.html" class="text-blue-800 hover:text-yellow-500 transition">Contact Us</a>
+<!-- Navbar -->
+<nav class="w-full flex justify-between items-center px-8 py-5 fixed top-0 z-50 shadow-md">
+  <div class="flex items-center space-x-4">
+    <img src="innologo.jpg" alt="Logo" class="w-12 h-12 rounded-full shadow-lg">
+    <h1 class="text-3xl font-bold">Innocreate</h1>
+  </div>
+  <div class="space-x-6 text-lg">
+    <a href="index.html">Home</a>
+    <a href="accomplishments.html">Our Accomplishments</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<section class="pt-28 px-8 fade-in">
+
+  <!-- Milestones / Recognition -->
+  <div class="section-bg fade-in">
+    <h2 class="text-4xl font-bold mb-6 text-center">Milestones & Recognition</h2>
+    <p class="text-center">We are proud to announce that we are one of fewer than 105 groundups in Singapore featured in <span class="font-semibold">@bagustogethersg</span>’s Groundup Directory. From Dec 8, we will officially work with Bagus Together to strengthen and scale our impact. ❤️</p>
+    <p class="text-center mt-2">This recognition helps us unlock new pathways for support 🔧, forge stronger partnerships 🧑‍🤝‍🧑, and accelerate our 3D-modelling initiative ✨🌍.</p>
+    <p class="text-center mt-2">Explore our listing: <a href="https://bagustogether.sg/collaborate" target="_blank">bagustogether.sg/collaborate</a></p>
+  </div>
+
+  <!-- Workshops We Have Done -->
+  <h2 class="text-4xl font-bold mb-12 fade-in text-center">Workshops We Have Done</h2>
+
+  <!-- First Workshop: Text Left, Image Right -->
+  <div class="mb-16 fade-in flex flex-wrap items-center justify-between">
+    <div class="text-block pr-6">
+      <h3 class="text-3xl font-semibold mb-2">Zhangde Primary School</h3>
+      <p>Conducted interactive 3D modelling workshops introducing students to creative design using Tinkercad. Students learned problem-solving and design thinking skills.</p>
     </div>
-  </nav>
+    <img src="zhangde_pri.jpg" alt="Zhangde Primary School" class="img-right">
+  </div>
 
-  <section class="py-24 px-8 max-w-6xl mx-auto fade-in">
-    <h2 class="text-4xl font-bold mb-12 text-blue-800 text-center">Our Accomplishments</h2>
-
-    <!-- Schools Section -->
-    <div id="schools" class="space-y-16">
-
-      <div class="text-center">
-        <h3 class="text-3xl font-semibold mb-4 text-blue-800">Zhangde Primary School</h3>
-        <img src="zhangde_pri.jpg" alt="Zhangde Primary School" class="w-full max-w-xl mx-auto rounded-xl mb-4 shadow-lg hover-zoom">
-      </div>
-
-      <div class="text-center">
-        <h3 class="text-3xl font-semibold mb-4 text-blue-800">Rulang Primary School</h3>
-        <img src="rulang_pri.jpg" alt="Rulang Primary School" class="w-full max-w-xl mx-auto rounded-xl mb-4 shadow-lg hover-zoom">
-      </div>
-
+  <!-- Second Workshop: Image Left, Text Right -->
+  <div class="mb-16 fade-in flex flex-wrap items-center justify-between">
+    <img src="rulang_pri.jpg" alt="Rulang Primary School" class="img-left">
+    <div class="text-block pl-6">
+      <h3 class="text-3xl font-semibold mb-2">Rulang Primary School</h3>
+      <p>Organized hands-on workshops focusing on STEM engagement and creative thinking. Students created their own 3D projects and learned teamwork skills.</p>
     </div>
+  </div>
 
-    <!-- Impact Section -->
-    <div class="mt-20 text-center max-w-4xl mx-auto bg-blue-50 rounded-xl p-10 shadow-md fade-in">
-      <h3 class="text-3xl font-bold mb-6 text-blue-800">Our Impact</h3>
-      <p class="text-lg text-gray-800 leading-relaxed">
-        Through our workshops, we have introduced students to <span class="font-semibold text-blue-800">3D design and creative problem-solving</span>, helped them build confidence, and inspired curiosity for STEM learning.
-      </p>
-    </div>
-  </section>
+</section>
 
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
 
 </body>
 </html>

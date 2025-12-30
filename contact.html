@@ -1,78 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innocreate | Contact Us</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .contact-card:hover {
-      transform: translateY(-5px);
-      transition: transform 0.3s ease;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innocreate | Contact Us</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #0a0a0a; color: #e0e0e0; font-family: 'Helvetica', sans-serif; }
+  a { color: #39ff14; } a:hover { color: #ff00ff; }
+  h2,h3 { color: #00f0ff; }
+  nav { background-color: #111111; }
+  nav a { color: #00f0ff; } nav a:hover { color: #ff00ff; }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .section-bg { background-color: #111111; border-radius: 1rem; box-shadow: 0 0 20px #00f0ff; padding: 2rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .icon { margin-right: 0.5rem; color: #ff00ff; }
+</style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body>
 
-  <!-- Navbar -->
-  <nav class="w-full flex justify-between items-center px-8 py-5 bg-white shadow fixed top-0 z-50">
-    <h1 class="text-3xl font-bold text-blue-800">Innocreate</h1>
-    <div class="space-x-6 text-lg">
-      <a href="index.html" class="text-blue-800 hover:text-yellow-500 transition">Home</a>
-      <a href="accomplishments.html" class="text-blue-800 hover:text-yellow-500 transition">Our Accomplishments</a>
-      <a href="contact.html" class="text-blue-800 hover:text-yellow-500 transition">Contact Us</a>
-    </div>
-  </nav>
+<!-- Navbar -->
+<nav class="w-full flex justify-between items-center px-8 py-5 fixed top-0 z-50 shadow-md">
+  <div class="flex items-center space-x-4">
+    <img src="innologo.jpeg" alt="Logo" class="w-12 h-12 rounded-full shadow-lg">
+    <h1 class="text-3xl font-bold">Innocreate</h1>
+  </div>
+  <div class="space-x-6 text-lg">
+    <a href="index.html">Home</a>
+    <a href="accomplishments.html">Our Accomplishments</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
 
-  <section class="py-24 px-8 max-w-4xl mx-auto text-center fade-in">
-    <h2 class="text-4xl font-bold mb-12 text-blue-800">Contact Us</h2>
+<!-- Contact Section -->
+<section class="pt-28 py-20 px-8 fade-in">
+  <div class="section-bg text-center">
+    <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
+    
+    <p class="mb-4"><span class="icon">📧</span>Email: <a href="mailto:innocreate123@gmail.com">innocreate123@gmail.com</a></p>
+    <p class="mb-4"><span class="icon">📞</span>Phone: <a href="tel:+6590653220">+65 9065 3220</a></p>
+    <p class="mb-4"><span class="icon">📸</span>Instagram: 
+      <a href="https://www.instagram.com/teaminnocreate/" target="_blank">teaminnocreate</a> / 
+      <a href="https://www.instagram.com/innocreate_gallery/" target="_blank">innocreate_gallery</a>
+    </p>
+  </div>
+</section>
 
-    <div class="space-y-10">
-
-      <div class="bg-blue-50 rounded-xl p-8 shadow-md contact-card">
-        <h3 class="text-2xl font-semibold mb-4 text-blue-800">Email</h3>
-        <a href="mailto:innocreate123@gmail.com" class="text-blue-800 hover:text-yellow-500 transition text-lg">innocreate123@gmail.com</a>
-      </div>
-
-      <div class="bg-blue-50 rounded-xl p-8 shadow-md contact-card">
-        <h3 class="text-2xl font-semibold mb-4 text-blue-800">Phone</h3>
-        <a href="tel:+6590653220" class="text-blue-800 hover:text-yellow-500 transition text-lg">+65 9065 3220</a>
-      </div>
-
-      <div class="bg-blue-50 rounded-xl p-8 shadow-md contact-card">
-        <h3 class="text-2xl font-semibold mb-4 text-blue-800">Instagram</h3>
-        <a href="https://www.instagram.com/teaminnocreate" target="_blank" class="text-blue-800 hover:text-yellow-500 transition text-lg">@teaminnocreate</a><br>
-        <a href="https://www.instagram.com/innocreate_gallery" target="_blank" class="text-blue-800 hover:text-yellow-500 transition text-lg">@innocreate_gallery</a>
-      </div>
-
-    </div>
-  </section>
-
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
 
 </body>
 </html>
