@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innocreate | Our Accomplishments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hover-zoom:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <nav class="w-full flex justify-between items-center px-8 py-5 bg-white shadow fixed top-0 z-50">
+    <h1 class="text-3xl font-bold text-blue-800">Innocreate</h1>
+    <div class="space-x-6 text-lg">
+      <a href="index.html" class="text-blue-800 hover:text-yellow-500 transition">Home</a>
+      <a href="accomplishments.html" class="text-blue-800 hover:text-yellow-500 transition">Our Accomplishments</a>
+      <a href="contact.html" class="text-blue-800 hover:text-yellow-500 transition">Contact Us</a>
+    </div>
+  </nav>
+
+  <section class="py-24 px-8 max-w-6xl mx-auto fade-in">
+    <h2 class="text-4xl font-bold mb-12 text-blue-800 text-center">Our Accomplishments</h2>
+
+    <!-- Schools Section -->
+    <div id="schools" class="space-y-16">
+
+      <div class="text-center">
+        <h3 class="text-3xl font-semibold mb-4 text-blue-800">Zhangde Primary School</h3>
+        <img src="zhangde_pri.jpg" alt="Zhangde Primary School" class="w-full max-w-xl mx-auto rounded-xl mb-4 shadow-lg hover-zoom">
+      </div>
+
+      <div class="text-center">
+        <h3 class="text-3xl font-semibold mb-4 text-blue-800">Rulang Primary School</h3>
+        <img src="rulang_pri.jpg" alt="Rulang Primary School" class="w-full max-w-xl mx-auto rounded-xl mb-4 shadow-lg hover-zoom">
+      </div>
+
+    </div>
+
+    <!-- Impact Section -->
+    <div class="mt-20 text-center max-w-4xl mx-auto bg-blue-50 rounded-xl p-10 shadow-md fade-in">
+      <h3 class="text-3xl font-bold mb-6 text-blue-800">Our Impact</h3>
+      <p class="text-lg text-gray-800 leading-relaxed">
+        Through our workshops, we have introduced students to <span class="font-semibold text-blue-800">3D design and creative problem-solving</span>, helped them build confidence, and inspired curiosity for STEM learning.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+</body>
+</html>
