@@ -4,54 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Innocreate | Home</title>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body {
     font-family: 'Helvetica', sans-serif;
     background-color: #E6F0FA;
     color: #1E2A38;
+    margin: 0;
     overflow-x: hidden;
   }
-  a { transition: color 0.3s ease; }
-  a:hover { color: #2563EB; }
+
   nav { background-color: #FFFFFF; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-  nav a { color: #1E2A38; font-weight: 500; }
+  nav a { color: #1E2A38; font-weight: 500; transition: color 0.3s; }
   nav a:hover { color: #2563EB; }
+
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* Background animation */
-  .animated-bg {
+  canvas#bgCanvas {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
     z-index: -1;
-    overflow: hidden;
-  }
-  .animated-bg span {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(37, 99, 235, 0.2);
-    animation: float 20s linear infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0.4; }
-    50% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) translateX(50vw) rotate(360deg); opacity: 0.2; }
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 </style>
 </head>
 <body>
 
-<!-- Animated Background -->
-<div class="animated-bg">
-  <span style="width: 120px; height: 120px; left: 10%; animation-duration: 25s;"></span>
-  <span style="width: 80px; height: 80px; left: 50%; animation-duration: 30s;"></span>
-  <span style="width: 150px; height: 150px; left: 80%; animation-duration: 35s;"></span>
-  <span style="width: 60px; height: 60px; left: 30%; animation-duration: 28s;"></span>
-  <span style="width: 100px; height: 100px; left: 70%; animation-duration: 32s;"></span>
-</div>
+<!-- Three.js Canvas -->
+<canvas id="bgCanvas"></canvas>
 
 <!-- Navbar -->
 <nav class="w-full flex justify-between items-center px-8 py-4 fixed top-0 z-50">
@@ -98,16 +83,87 @@
 </section>
 
 <script>
+/* Fade-in on scroll */
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
     entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
+    obs.unobserve(entry.target);
   });
-}, appearOptions);
-faders.forEach(fader=>appearOnScroll.observe(fader));
+}, { threshold: 0.1 });
+faders.forEach(el => observer.observe(el));
+
+/* Three.js Background Setup */
+const canvas = document.getElementById('bgCanvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+// Light
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 10, 7.5);
+scene.add(light);
+
+// Shapes array
+const shapes = [];
+
+// Function to create a single random shape
+function createShape() {
+  const types = ['cube','pyramid','sphere'];
+  const type = types[Math.floor(Math.random()*types.length)];
+  let geometry;
+  switch(type){
+    case 'cube': geometry = new THREE.BoxGeometry(1,1,1); break;
+    case 'pyramid': geometry = new THREE.ConeGeometry(0.6,1,4); break;
+    case 'sphere': geometry = new THREE.SphereGeometry(0.5,16,16); break;
+  }
+  const colors = [0xff0000,0x00ff00,0x0000ff];
+  const material = new THREE.MeshStandardMaterial({
+    color: colors[Math.floor(Math.random()*colors.length)],
+    transparent:true,
+    opacity:0.6
+  });
+  const mesh = new THREE.Mesh(geometry, material);
+
+  // Spread shapes across full width, height, and depth
+  mesh.position.set(
+    (Math.random()-0.5)*20,    // x: -10 → 10
+    (Math.random()-0.5)*15,    // y: -7.5 → 7.5
+    (Math.random()-0.5)*20 - 5 // z: -15 → 5
+  );
+
+  mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+  mesh.userData.speed = 0.001 + Math.random()*0.002; // floating speed
+  scene.add(mesh);
+  shapes.push(mesh);
+}
+
+// Create 50 shapes
+for(let i=0;i<50;i++) createShape();
+
+camera.position.z = 5;
+
+// Animate shapes
+function animate() {
+  requestAnimationFrame(animate);
+  shapes.forEach(s => {
+    s.position.y += s.userData.speed;
+    if(s.position.y > 7.5) s.position.y = -7.5; // loop vertical position
+    s.rotation.x += 0.01;
+    s.rotation.y += 0.01;
+  });
+  renderer.render(scene, camera);
+}
+animate();
+
+// Responsive
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 </script>
 
 </body>
