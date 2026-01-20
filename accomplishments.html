@@ -6,25 +6,81 @@
 <title>Innocreate | Our Accomplishments</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body { background-color: #0a0a0a; color: #e0e0e0; font-family: 'Helvetica', sans-serif; line-height: 1.7; }
-  a { color: #39ff14; } a:hover { color: #ff00ff; }
-  h2,h3 { color: #00f0ff; text-shadow: 0 0 8px #00f0ff; }
-  nav { background-color: #111111; }
-  nav a { color: #00f0ff; } nav a:hover { color: #ff00ff; }
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .section-bg { background-color: #111111; border-radius: 1rem; box-shadow: 0 0 20px #00f0ff; padding: 2.5rem; margin-bottom: 4rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-  .img-right { float: right; margin-left: 2rem; max-width: 45%; border-radius: 1rem; box-shadow: 0 0 20px #ff00ff; }
-  .img-left { float: left; margin-right: 2rem; max-width: 45%; border-radius: 1rem; box-shadow: 0 0 20px #39ff14; }
+  body {
+    background: linear-gradient(
+      to bottom,
+      #294651 0%,
+      #294651 75%,
+      #ffffff 100%
+    );
+    color: #e0e0e0;
+    font-family: 'Helvetica', sans-serif;
+    line-height: 1.7;
+  }
+
+  a { color: #39ff14; }
+  a:hover { color: #ff00ff; }
+
+  h2, h3 {
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffffff;
+  }
+
+  nav { background-color: #294651; }
+  nav a { color: #ffffff; }
+  nav a:hover { color: #ff00ff; }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-bg {
+    background-color: #5B3E29;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px #ffffff;
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-right {
+    float: right;
+    margin-left: 2rem;
+    max-width: 45%;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px #ffffff;
+  }
+
+  .img-left {
+    float: left;
+    margin-right: 2rem;
+    max-width: 45%;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px #ffffff;
+  }
+
   .text-block { max-width: 50%; }
-  @media(max-width:768px) { 
-    .img-left, .img-right, .text-block { float: none; margin: 0 auto 1rem; display: block; max-width: 90%; }
+
+  @media (max-width: 768px) {
+    .img-left, .img-right, .text-block {
+      float: none;
+      max-width: 90%;
+      margin: 0 auto 1rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="w-full flex justify-between items-center px-8 py-5 fixed top-0 z-50 shadow-md">
   <div class="flex items-center space-x-4">
     <img src="innologo.jpeg" alt="Logo" class="w-12 h-12 rounded-full shadow-lg">
@@ -37,35 +93,43 @@
   </div>
 </nav>
 
-<!-- Page Content -->
 <section class="pt-28 px-8 fade-in">
 
-  <!-- Milestones / Recognition -->
   <div class="section-bg fade-in">
     <h2 class="text-4xl font-bold mb-6 text-center">Milestones & Recognition</h2>
-    <p class="text-center">We are proud to announce that we are one of fewer than 105 groundups in Singapore featured in <span class="font-semibold">@bagustogethersg</span>’s Groundup Directory. From Dec 8, we will officially work with Bagus Together to strengthen and scale our impact. ❤️</p>
-    <p class="text-center mt-2">This recognition helps us unlock new pathways for support 🔧, forge stronger partnerships 🧑‍🤝‍🧑, and accelerate our 3D-modelling initiative ✨🌍.</p>
-    <p class="text-center mt-2">Explore our listing: <a href="https://bagustogether.sg/collaborate" target="_blank">bagustogether.sg/collaborate</a></p>
+    <p class="text-center">
+      We are one of fewer than 105 groundups in Singapore featured in
+      <span class="font-semibold">@bagustogethersg</span>’s Groundup Directory.
+    </p>
+    <p class="text-center mt-2">
+      Explore our listing:
+      <a href="https://bagustogether.sg/collaborate" target="_blank" rel="noopener noreferrer">
+        bagustogether.sg/collaborate
+      </a>
+    </p>
   </div>
 
-  <!-- Workshops We Have Done -->
-  <h2 class="text-4xl font-bold mb-12 fade-in text-center">Workshops We Have Done</h2>
+  <h2 class="text-4xl font-bold mb-12 text-center fade-in">Workshops We Have Done</h2>
 
-  <!-- First Workshop: Text Left, Image Right -->
   <div class="mb-16 fade-in flex flex-wrap items-center justify-between">
     <div class="text-block pr-6">
       <h3 class="text-3xl font-semibold mb-2">Zhangde Primary School</h3>
-      <p>Conducted interactive 3D modelling workshops introducing students to creative design using Tinkercad. Students learned problem-solving and design thinking skills.</p>
+      <p>
+        Conducted interactive 3D modelling workshops using Tinkercad,
+        helping students develop creativity and design-thinking skills.
+      </p>
     </div>
     <img src="zhangde_pri.jpg" alt="Zhangde Primary School" class="img-right">
   </div>
 
-  <!-- Second Workshop: Image Left, Text Right -->
   <div class="mb-16 fade-in flex flex-wrap items-center justify-between">
     <img src="rulang_pri.jpg" alt="Rulang Primary School" class="img-left">
     <div class="text-block pl-6">
       <h3 class="text-3xl font-semibold mb-2">Rulang Primary School</h3>
-      <p>Organized hands-on workshops focusing on STEM engagement and creative thinking. Students created their own 3D projects and learned teamwork skills.</p>
+      <p>
+        Hands-on STEM workshops where students collaborated to build
+        and present their own 3D designs.
+      </p>
     </div>
   </div>
 
@@ -73,15 +137,15 @@
 
 <script>
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
     entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
+    obs.unobserve(entry.target);
   });
-}, appearOptions);
-faders.forEach(fader=>appearOnScroll.observe(fader));
+}, { threshold: 0.1 });
+
+faders.forEach(el => observer.observe(el));
 </script>
 
 </body>
